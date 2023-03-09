@@ -32,8 +32,8 @@
 
 
 ## 使用素材
-- 使用検討中
+- 映画用のAPIで画像を取得する（TMDBに登録
 
 
-著作権対策参考サイト https://www.monalisa.work/entry/tyosakuken
+
 https://docs.google.com/spreadsheets/d/1Up9WoidghZJPb4VzZbuGmmCBbCXsXZCifULjISl8Z34/edit?usp=sharing
