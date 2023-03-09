@@ -32,8 +32,7 @@
 
 
 ## 使用素材
-- 映画用のAPIで画像を取得する（TMDBに登録
+- 映画用のAPIで画像を取得する（TMDBに登録）
 
 
-
-https://docs.google.com/spreadsheets/d/1Up9WoidghZJPb4VzZbuGmmCBbCXsXZCifULjISl8Z34/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/14eKX8nfubMOgraGcklgELT1nBKmFSg2mqAeefDUpGRc/edit?usp=sharing
