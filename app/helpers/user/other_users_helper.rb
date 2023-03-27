@@ -1,0 +1,2 @@
+module User::OtherUsersHelper
+end

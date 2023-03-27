@@ -1,0 +1,16 @@
+<body>
+  <div>
+    <h2>ユーザー一覧</h2>
+    <% @user.each do |user| %>
+    <li>
+      <% if user.image.attached? %>
+       <%= image_tag user.image,size: "70x70" %>
+      <% else %>
+       <%= image_tag 'no_image', size: "70x70" %>
+      <% end %>
+       <%= user.name %>
+      <%= link_to "詳細",admin_user_path(user.id) %>
+    </li>
+    <% end %>
+  </div>
+</body>
