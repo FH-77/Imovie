@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :user,skip: [:passwords], controllers: {
   registrations: "user/registrations",
   sessions: 'user/sessions'
@@ -24,7 +25,7 @@ Rails.application.routes.draw do
     get '/movies/serch' => "movies#serch"
     resources :movies,only:[:show]
     resources :reviews,only:[:new,:show,:edit,:index,:create,:destroy]
-    resources :comments,only:[:new,:create,:destroy]
+    resources :comment,only:[:new,:create,:destroy]
     resources :other_users,only:[:show]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

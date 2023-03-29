@@ -12,25 +12,86 @@
 
   <body>
    <header>
-    <a href="/">Imovie</a>
-    <% if admin_signed_in? %>
-     <% if request.fullpath.include? "/admin" %>
-      <%= link_to "ユーザー一覧" ,admin_users_path %>
-      <%= link_to "レビュー一覧" ,admin_review_index_path %>
-      <%= link_to "ログアウト" ,destroy_admin_session_path, method: :delete %>
-    <% else %>
-     <%= link_to "マイページ" ,users_path %>
-     <%= link_to "ログアウト", destroy_user_session_path ,method: :delete %>
+    <nav class="navbar" role="navigation" aria-label="main-navigation">
+     <div class="navbar-brand">
+      <p class="navbar-item">
+        <%= link_to root_path do %>
+         <strong class="is-size-3" style="font-family: cursive; color: black;">Imovie</strong>
+        <% end %>
+      </p>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+     </div>
+     <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+       <div class="navbar-item">
+        <h1>映画検索</h1>
+
+         <div>
+          <%= form_tag(movies_serch_path, method: :get) do %>
+           <%= search_field_tag :looking_for, nil, placeholder: 'Movie Title...' %>
+           <%= submit_tag '検索' %>
+          <% end %>
+         </div>
+        <% if admin_signed_in? %>
+         <% if request.fullpath.include? "/admin" %>
+          <%= link_to admin_users_path, class: "button" do %>
+           ユーザー一覧
+          <% end %>
+          <%= link_to admin_review_index_path, class: "button" do %>
+           レビュー一覧
+          <% end %>
+          <%= link_to destroy_admin_session_path, method: :delete, class: "button" do %>
+           ログアウト
+          <% end %>
+         <% else %>
+          <%= link_to users_path, class: "button" do %>
+           マイページ
+          <% end %>
+          <%= link_to destroy_user_session_path ,method: :delete, class: "button" do %>
+          　ログアウト
+          <% end %>
+         <% end %>
+         <% elsif user_signed_in? %>
+          <%= link_to users_path, class: "button" do %>
+           マイページ
+          <% end %>
+          <%= link_to destroy_user_session_path ,method: :delete, class: "button" do %>
+           ログアウト
+          <% end %>
+         <% else %>
+          <%= link_to about_path, class: "button" do %>
+           About
+          <% end %>
+          <%= link_to new_user_registration_path, class: "button" do %>
+           新規登録
+          <% end %>
+          <%= link_to new_user_session_path, class: "button" do %>
+           ログイン
+          <% end %>
+         <% end %>
+       </div>
+      </div>
+     </div>
+    </nav>
+   </div>
+  </nav>
+ </header>
+   <body>
+    <% if flash[:notice] %>
+     <div class="notification is-info">
+      <p class="notice"><%= notice %></p>
+     </div>
     <% end %>
-    <% elsif user_signed_in? %>
-     <%= link_to "マイページ" ,users_path %>
-     <%= link_to "ログアウト", destroy_user_session_path ,method: :delete %>
-    <% else %>
-     <%= link_to "About", about_path %>
-     <%= link_to "新規登録", new_user_registration_path %>
-     <%= link_to "ログイン", new_user_session_path %>
+    <% if flash[:alert] %>
+     <div class="notification is-danger">
+      <p class="alert"><%= alert %></p>
+     </div>
     <% end %>
-   </header>
+   </body>
     <%= yield %>
   </body>
 </html>
